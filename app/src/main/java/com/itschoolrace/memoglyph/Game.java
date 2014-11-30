@@ -44,13 +44,13 @@ public class Game extends Activity implements Level, Stage {
     private int[] currentStageMap;
     private int currentStageIndex;
     private int currentLevel;
-    private int nbPlay;
     private String difficulty;
 
     private int period;
 
     //0 = player, 1 = IA
     private int turn;
+
     private int count;
 
     private Button mainButton;
@@ -73,7 +73,7 @@ public class Game extends Activity implements Level, Stage {
         handler = new Handler();
         runnable = new Runnable() {
             public void run() {
-                if (currentStage > STAGE3) {
+                if (currentStage > NBSTAGE) {
                     Intent intent = new Intent(Game.this, Main.class);
                     startActivity(intent);
                 }
@@ -95,7 +95,7 @@ public class Game extends Activity implements Level, Stage {
         //set the current stage, level and the number of play per stage
         currentStage = STAGE1;
         currentLevel = EASY;
-        nbPlay = 2;
+
         currentStageIndex = 0;
         currentStageMap = STAGE1_MAP;
 
@@ -191,10 +191,10 @@ public class Game extends Activity implements Level, Stage {
     private void check() {
         if (currentBtn.getId() == buttonPressed.get(rightButton)) {
             rightButton++;
-            if (rightButton == currentStageMap[currentStageIndex] && currentStageIndex == nbPlay) {
+            if (rightButton == currentStageMap[currentStageIndex] && currentStageIndex == NBPLAY) {
                 message(3);
                 currentStage += 1;
-                if (currentStage > STAGE3) {
+                if (currentStage > NBSTAGE) {
                     message(0);
                 } else {
                     turn = 1;
@@ -239,7 +239,7 @@ public class Game extends Activity implements Level, Stage {
         } else if (i == 3) {
             mainButton.setText("Vous passez au niveau suivant !");
         }
-        if (currentStage > STAGE3) {
+        if (currentStage > NBSTAGE) {
             mainButton.setText("Félicitations, tu as terminé le jeu !");
             duration = 20000L;
         }
