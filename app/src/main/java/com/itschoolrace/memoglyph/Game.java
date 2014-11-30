@@ -59,6 +59,7 @@ public class Game extends Activity implements Level, Stage {
 
     private Handler handler;
     private Runnable runnable;
+    private Runnable runnable1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +78,12 @@ public class Game extends Activity implements Level, Stage {
                     Intent intent = new Intent(Game.this, Main.class);
                     startActivity(intent);
                 }
-
                 mainButton.setVisibility(View.INVISIBLE);
+            }
+        };
+        runnable1 = new Runnable() {
+            public void run() {
+                tryAgainButton.setEnabled(true);
             }
         };
 
@@ -118,8 +123,8 @@ public class Game extends Activity implements Level, Stage {
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainButton.setVisibility(View.INVISIBLE);
                 tryAgainButton.setEnabled(true);
+                mainButton.setVisibility(View.INVISIBLE);
                 timer.scheduleAtFixedRate(task, 0, period);
             }
         });
@@ -133,9 +138,7 @@ public class Game extends Activity implements Level, Stage {
             public void onClick(View view) {
                 turn = 1;
                 rightButton = 0;
-                buttonPressed.removeAll(buttonPressed);
-                initTimer();
-                timer.scheduleAtFixedRate(task, 0, period);
+                configIA();
             }
         });
         tryAgainButton.setEnabled(false);
@@ -202,10 +205,7 @@ public class Game extends Activity implements Level, Stage {
                     currentLevel = EASY;
                     currentStageIndex = 0;
                     Load();
-                    updateUI();
-                    buttonPressed.removeAll(buttonPressed);
-                    initTimer();
-                    timer.scheduleAtFixedRate(task, 2000, period);
+                    configIA();
                 }
             } else if (rightButton == currentStageMap[currentStageIndex]) {
                 message(1);
@@ -214,10 +214,7 @@ public class Game extends Activity implements Level, Stage {
                 rightButton = 0;
                 currentLevel += 1;
                 config();
-                updateUI();
-                buttonPressed.removeAll(buttonPressed);
-                initTimer();
-                timer.scheduleAtFixedRate(task, 3000, period);
+                configIA();
             }
         } else {
             if (turn == 0) {
@@ -225,6 +222,15 @@ public class Game extends Activity implements Level, Stage {
                 message(2);
             }
         }
+    }
+
+    private void configIA() {
+        updateUI();
+        buttonPressed.removeAll(buttonPressed);
+        tryAgainButton.setEnabled(false);
+        initTimer();
+        timer.scheduleAtFixedRate(task, 1000, period);
+        handler.postDelayed(runnable1, 1000 + period);
     }
 
     private void updateUI() {
