@@ -58,8 +58,6 @@ public class Game extends Activity implements Level, Stage {
     private Button tryAgainButton;
 
     private Handler handler;
-    private Runnable runnable;
-    private Runnable runnable1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,22 +68,8 @@ public class Game extends Activity implements Level, Stage {
         animScale = AnimationUtils.loadAnimation(this, R.anim.anim_scale);
         duration = animScale.getDuration() * 3;
 
-        //set the main button invisible
+        //set the handler
         handler = new Handler();
-        runnable = new Runnable() {
-            public void run() {
-                if (currentStage > NBSTAGE) {
-                    Intent intent = new Intent(Game.this, Main.class);
-                    startActivity(intent);
-                }
-                mainButton.setVisibility(View.INVISIBLE);
-            }
-        };
-        runnable1 = new Runnable() {
-            public void run() {
-                tryAgainButton.setEnabled(true);
-            }
-        };
 
         //loading buttons resources
         images = getResources().obtainTypedArray(R.array.loading_images);
@@ -123,10 +107,10 @@ public class Game extends Activity implements Level, Stage {
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if( mainButton.isEnabled()){
+                if (mainButton.isEnabled()) {
                     tryAgainButton.setEnabled(true);
                     mainButton.setVisibility(View.INVISIBLE);
-                    timer.scheduleAtFixedRate(task, 0, period);
+                    startSimulating(500);
                 }
             }
         });
@@ -138,9 +122,7 @@ public class Game extends Activity implements Level, Stage {
         tryAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                turn = 1;
-                rightButton = 0;
-                configIA();
+                startSimulating(500);
             }
         });
         tryAgainButton.setEnabled(false);
@@ -148,6 +130,12 @@ public class Game extends Activity implements Level, Stage {
         //loading level, stage and resources.
         Load();
         updateUI();
+    }
+
+    private void clickable(boolean clickable) {
+        for (int i = 0; i < buttons.length(); i++) {
+            allBtns[i].setEnabled(clickable);
+        }
     }
 
     private void initTimer() {
@@ -164,7 +152,9 @@ public class Game extends Activity implements Level, Stage {
                         @Override
                         public void run() {
                             //dispatch a motionEvent on a random created button
-                            int choice = (int) (Math.random() * buttons.length());
+
+                            final int choice = (int) (Math.random() * buttons.length());
+                            allBtns[choice].setEnabled(true);
                             try {
                                 allBtns[choice].dispatchTouchEvent(mEvent());
                                 buttonPressed.add(allBtns[choice].getId());
@@ -187,7 +177,9 @@ public class Game extends Activity implements Level, Stage {
             currentBtn.setTextColor(Color.WHITE);
 
             if (motionEvent.getAction() == MotionEvent.ACTION_UP && turn == 0) {
-                check();
+                if (buttonPressed.size() != 0){
+                    check();
+                }
             }
             return true;
         }
@@ -202,21 +194,17 @@ public class Game extends Activity implements Level, Stage {
                 if (currentStage > NBSTAGE) {
                     message(0);
                 } else {
-                    turn = 1;
-                    rightButton = 0;
                     currentLevel = EASY;
                     currentStageIndex = 0;
                     Load();
-                    configIA();
+                    startSimulating(2000);
                 }
             } else if (rightButton == currentStageMap[currentStageIndex]) {
                 message(1);
                 currentStageIndex += 1;
-                turn = 1;
-                rightButton = 0;
                 currentLevel += 1;
                 config();
-                configIA();
+                startSimulating(2000);
             }
         } else {
             if (turn == 0) {
@@ -226,13 +214,22 @@ public class Game extends Activity implements Level, Stage {
         }
     }
 
-    private void configIA() {
+    private void startSimulating(int duration) {
+        turn = 1;
+        rightButton = 0;
         updateUI();
+        clickable(false);
         buttonPressed.removeAll(buttonPressed);
         tryAgainButton.setEnabled(false);
         initTimer();
-        timer.scheduleAtFixedRate(task, 1000, period);
-        handler.postDelayed(runnable1, 1000 + period);
+        timer.scheduleAtFixedRate(task, duration, period);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                clickable(true);
+                tryAgainButton.setEnabled(true);
+            }
+        }, duration*3 + period);
     }
 
     private void updateUI() {
@@ -250,10 +247,19 @@ public class Game extends Activity implements Level, Stage {
         }
         if (currentStage > NBSTAGE) {
             mainButton.setText("Félicitations, tu as terminé le jeu !");
-            duration = 20000L;
+            duration = 200000L;
         }
         mainButton.setEnabled(false);
-        handler.postDelayed(runnable, duration);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (currentStage > NBSTAGE) {
+                    Intent intent = new Intent(Game.this, Main.class);
+                    startActivity(intent);
+                }
+                mainButton.setVisibility(View.INVISIBLE);
+            }
+        }, duration);
         mainButton.setVisibility(View.VISIBLE);
     }
 
@@ -290,11 +296,11 @@ public class Game extends Activity implements Level, Stage {
         switch (currentLevel) {
             case EASY:
                 difficulty = "Facile";
-                period = 1800;
+                period = 1600;
                 break;
             case MEDIUM:
                 difficulty = "Intermédiaire";
-                period = 1400;
+                period = 1300;
                 break;
             case HARD:
                 difficulty = "Difficile";

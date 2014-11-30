@@ -14,7 +14,6 @@ public interface Stage {
     public static final int STAGE2 = 2;
     public static final int STAGE3 = 3;
 
-
     public static final int NBSTAGE = 3;
     public static final int NBPLAY = 2;
 }
