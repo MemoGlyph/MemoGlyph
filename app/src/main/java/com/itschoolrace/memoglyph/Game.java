@@ -123,9 +123,11 @@ public class Game extends Activity implements Level, Stage {
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tryAgainButton.setEnabled(true);
-                mainButton.setVisibility(View.INVISIBLE);
-                timer.scheduleAtFixedRate(task, 0, period);
+                if( mainButton.isEnabled()){
+                    tryAgainButton.setEnabled(true);
+                    mainButton.setVisibility(View.INVISIBLE);
+                    timer.scheduleAtFixedRate(task, 0, period);
+                }
             }
         });
 
@@ -238,6 +240,7 @@ public class Game extends Activity implements Level, Stage {
     }
 
     private void message(int i) {
+        mainButton.setEnabled(false);
         if (i == 1) {
             mainButton.setText("Bien joué !");
         } else if (i == 2) {
@@ -249,6 +252,7 @@ public class Game extends Activity implements Level, Stage {
             mainButton.setText("Félicitations, tu as terminé le jeu !");
             duration = 20000L;
         }
+        mainButton.setEnabled(false);
         handler.postDelayed(runnable, duration);
         mainButton.setVisibility(View.VISIBLE);
     }
