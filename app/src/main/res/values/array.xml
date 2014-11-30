@@ -32,7 +32,14 @@
         <item>Stage</item>
         <item>6 mois</item>
         <item>HTML</item>
+        <item>PHP</item>
+        <item>MySQL</item>
         <item>CSS</item>
+        <item>C#</item>
+        <item>Chef de projet</item>
+        <item>2 ans d\'alternance</item>
+        <item>AngularJS</item>
+        <item>NodeJS</item>
     </array>
     <array name="loading_stage2">
         <item>Formation</item>
@@ -43,7 +50,7 @@
         <item>Chinois</item>
         <item>Anglais</item>
         <item>Japonais</item>
-        <item>BAC S</item>
+        <item>BAC Scientifique</item>
         <item>TOEIC : 815</item>
     </array>
     <array name="loading_stage3">
@@ -56,6 +63,8 @@
         <item>IntellijIDEA</item>
         <item>Sublime Text</item>
         <item>MS Project</item>
-        <item>Windows/linux</item>
+        <item>Windows</item>
+        <item>Linux</item>
+        <item>Visual Studio</item>
     </array>
 </resources>
