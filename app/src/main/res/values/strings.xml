@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chetiouiBenjamin">Benjamin Chetioui</string>
+    <string name="stephaneTruong">Stéphane Truong</string>
+    <string name="stephaneMougel">Stéphane Mougel</string>
+    <string name="createdBy">Ce jeu a été créé par : </string>
+    <string name="tryAgain">Recommencer</string>
+    <string name="playBtn">Jouer</string>
+    <string name="partnership">En partenariat avec</string>
+    <string name="title">Memo Glyph</string>
+    <string name="credits">Crédits</string>
+    <string name="rules">Le but est de reproduire les actions effectuées par l\'application.</string>
+    <string name="start">Appuyer ici pour commencer</string>
+    <string name="app_name">Memo Glyph</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+</resources>

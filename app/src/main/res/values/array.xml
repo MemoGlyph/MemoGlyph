@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="loading_images">
+        <item>@drawable/btn_aubay_orange</item>
+        <item>@drawable/btn_blue_gray</item>
+        <item>@drawable/btn_cherry</item>
+        <item>@drawable/btn_coral_blue</item>
+        <item>@drawable/btn_honey</item>
+        <item>@drawable/btn_mint</item>
+        <item>@drawable/btn_mouse_gray</item>
+        <item>@drawable/btn_plum</item>
+    </array>
+    <array name="loading_buttons">
+        <item>@id/button</item>
+        <item>@id/button2</item>
+        <item>@id/button3</item>
+        <item>@id/button4</item>
+        <item>@id/button5</item>
+        <item>@id/button6</item>
+        <item>@id/button7</item>
+        <item>@id/button8</item>
+        <item>@id/button9</item>
+        <item>@id/button10</item>
+    </array>
+    <array name="loading_stage1">
+        <item>CV</item>
+        <item>Développeur</item>
+        <item>3 février 2015</item>
+        <item>Java</item>
+        <item>Android</item>
+        <item>JS</item>
+        <item>Stage</item>
+        <item>6 mois</item>
+        <item>HTML</item>
+        <item>CSS</item>
+    </array>
+    <array name="loading_stage2">
+        <item>Formation</item>
+        <item>3ème année</item>
+        <item>Ingénierie logiciel</item>
+        <item>BAC+5</item>
+        <item>Langues</item>
+        <item>Chinois</item>
+        <item>Anglais</item>
+        <item>Japonais</item>
+        <item>BAC S</item>
+        <item>TOEIC : 815</item>
+    </array>
+    <array name="loading_stage3">
+        <item>Compétences</item>
+        <item>Git</item>
+        <item>Agilité</item>
+        <item>Android Studio</item>
+        <item>Eclipse</item>
+        <item>SVN</item>
+        <item>IntellijIDEA</item>
+        <item>Sublime Text</item>
+        <item>MS Project</item>
+        <item>Windows/linux</item>
+    </array>
+</resources>

@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.itschoolrace.memoglyph.Main"
+    android:background="#ffe62315">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title"
+        android:id="@+id/title"
+        android:textSize="80sp"
+        android:textIsSelectable="true"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playButton"
+        android:width="250dp"
+        android:gravity="center"
+        android:height="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/creditsButton"
+        android:layout_alignLeft="@+id/creditsButton"
+        android:layout_alignStart="@+id/creditsButton"
+        android:background="@drawable/btn"
+        android:text="@string/playBtn"
+        android:textColor="#E62315"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="false" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/creditsButton"
+        android:width="250dp"
+        android:height="50dp"
+        android:layout_marginBottom="91dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn"
+        android:textSize="35sp"
+        android:text="@string/credits"
+        android:textColor="#ffe62315"
+        android:gravity="center_vertical|center|center_horizontal"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/aubayLogo"
+        android:background="@drawable/logo_aubay"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/partnership"
+        android:id="@+id/partnershipText"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:width="240dp"
+        android:height="40dp"
+        android:layout_alignBottom="@+id/aubayLogo"
+        android:layout_toLeftOf="@+id/aubayLogo"
+        android:layout_toStartOf="@+id/aubayLogo" />
+
+</RelativeLayout>

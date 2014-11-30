@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#E62315">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/createdBy"
+        android:id="@+id/createdBy"
+        android:textColor="#ffffffff"
+        android:textSize="25dp"
+        android:gravity="center|center_horizontal"
+        android:layout_below="@+id/title2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title"
+        android:id="@+id/title2"
+        android:textSize="80sp"
+        android:textIsSelectable="true"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/stephaneMougel"
+        android:id="@+id/stephaneMougel"
+        android:gravity="center|center_horizontal"
+        android:textColor="#E62315"
+        android:textSize="25sp"
+        android:background="@drawable/btn"
+        android:width="250dp"
+        android:height="35dp"
+        android:layout_below="@+id/createdBy"
+        android:layout_alignLeft="@+id/stephaneTruong"
+        android:layout_alignStart="@+id/stephaneTruong"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/stephaneTruong"
+        android:id="@+id/stephaneTruong"
+        android:gravity="center|center_horizontal"
+        android:textColor="#E62315"
+        android:textSize="25sp"
+        android:background="@drawable/btn"
+        android:width="250dp"
+        android:layout_below="@+id/stephaneMougel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:height="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/chetiouiBenjamin"
+        android:id="@+id/benjaminChetioui"
+        android:gravity="center|center_horizontal"
+        android:textColor="#E62315"
+        android:textSize="25sp"
+        android:background="@drawable/btn"
+        android:width="250dp"
+        android:layout_below="@+id/stephaneTruong"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:height="35dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logo_intech"
+        android:layout_marginBottom="10dp" />
+
+</RelativeLayout>
